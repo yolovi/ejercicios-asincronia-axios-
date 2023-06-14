@@ -90,10 +90,6 @@ function showUsers(){
 // - Ahora en vez de mostrar los usuarios por consola muestra el NOMBRE de cada uno en el DOM ( en el HTML).
 
 // Show output in browser: 
-//FIXME:    
-    //1. cuando  le doy al boton me sale undifined pero si refresco la pagina me saca el array de usuarios.
-    //2. solo pide pintar los nombres, no todo el array
-
 
     let users2 = [];
 
