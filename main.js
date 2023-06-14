@@ -40,7 +40,6 @@ printListUsers();
 function printNameUsers() {
   axios
     .get("https://jsonplaceholder.typicode.com/users")
-
     .then((res) =>
       res.data.forEach((user) => {
         console.log(user.name);
@@ -58,35 +57,36 @@ printNameUsers();
 
 // GET REQUEST
 
-let users = [];
+let users;
 
 axios
   .get("https://jsonplaceholder.typicode.com/users")
   .then((resp) => {
-    showUsers(resp);
+    // showUsers(resp);
     users = resp.data;
-    // console.log(users)
+    console.log(users)
   })
   .catch((err) => console.error(err));
 
-console.log(users);
+
 
 // - Crear una función llamada "showUsers"que muestre por consola la variable global "users" que has creado.
 
-// Console.log Users:
+//Console.log Users:
 
-// function showUsers(){
-//     setTimeout(() => {
-//         console.log(users);
-//       }, "1000")
-//       document.querySelector(".msg").innerHTML = users
-// }
-
+function showUsers(){
+    setTimeout(() => {
+        console.log(users);
+      }, "1000")
+}
 // showUsers()
+
 
 // ---------------------------------------------------------------------------
 
 // - Crea un botón que, cuando lo cliques, ejecute la función que habías creado.
+
+
 // - Ahora en vez de mostrar los usuarios por consola muestra el NOMBRE de cada uno en el DOM ( en el HTML).
 
 // Show output in browser: 
@@ -94,22 +94,74 @@ console.log(users);
     //1. cuando  le doy al boton me sale undifined pero si refresco la pagina me saca el array de usuarios.
     //2. solo pide pintar los nombres, no todo el array
 
-function showUsers(resp) {
-  document.getElementById(
-    "res-div"
-  ).innerHTML = `<div class="card">
-  <h5>Status: ${resp.status}</h5>
-</div>
-<div class="card">
-  <div class="card-header">
-    Data
-  </div>
-  <div class="card-body">
-    <pre>${JSON.stringify(resp.data, null, 2)}</pre>   
-  </div>
-</div>
-`;
-}
 
-//Event listener
-document.getElementById("show-users").addEventListener("click", showUsers);
+    let users2 = [];
+
+    axios
+      .get("https://jsonplaceholder.typicode.com/users")
+      .then((res) =>
+      res.data.forEach((user) => {
+        // console.log(user.name);
+        users2.push(user.name)
+      })
+    )
+      .catch((err) => console.error(err));
+    
+    console.log(users2);
+    
+    // - Crea un botón que, cuando lo cliques, ejecute la función que habías creado.
+    // - Ahora en vez de mostrar los usuarios por consola muestra el nombre de cada uno en el DOM ( en el HTML).
+    
+    // Show output in browser:
+    
+    function showUsers2() {
+      // console.log(users2)
+
+      document.getElementById(
+        "res-div"
+      ).innerHTML = `
+    <div class="card mt-3">
+      <div class="card-header">
+        Data
+      </div>
+      <div class="card-body">
+        <pre>${JSON.stringify(users2, null, 2).replace("[","").replace("]","")}</pre>   
+      </div>
+    </div>
+    `;
+    }
+    
+    //Event listener
+    document.getElementById("show-users").addEventListener("click", showUsers2);  
+    
+
+//-------------------------------------------------------------------------------
+
+
+// SOLUCION corregida CHAT GPT:
+
+// function showUsers2() {
+//   let container = document.createElement("div");
+  
+//   users.map((user) => {
+//     let userDiv = document.createElement("div");
+//     userDiv.innerText = user.name;
+//     container.appendChild(userDiv);
+//   });
+
+//   let resDiv = document.getElementById("res-div");
+//   resDiv.innerHTML = `
+//     <div class="card">
+//       <div class="card-header">
+//         Data
+//       </div>
+//       <div class="card-body">
+//         ${container.innerHTML}
+//       </div>
+//     </div>
+//   `;
+// }
+
+
+// // //Event listener
+// document.getElementById("show-users").addEventListener("click", showUsers2);

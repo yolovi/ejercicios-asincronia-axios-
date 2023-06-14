@@ -23,3 +23,7 @@ hr {
 .card {
     border: 1px solid rgb(17, 176, 144);
 }
+
+.div {
+    border: 2px solid greenyellow;
+}
