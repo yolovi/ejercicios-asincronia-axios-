@@ -24,21 +24,21 @@ Leyendo su documentación, deberás hacer lo siguiente:
 
 //-------------------------------------------------------------------------------------------------------
 
-// Imprimir por consola la lista (array) de usuarios.
+// 1.  Imprimir por consola la lista (array) de usuarios.
 
 function printListUsers() {
   axios
     .get("https://jsonplaceholder.typicode.com/users")
-    .then((res) => console.log(res))
+    .then((res) => console.log(res.data))
     .catch((err) => console.error(err));
 }
 
 printListUsers();
 
-// - Imprimir por consola solo el nombre de los usuarios.
+// 2 - Imprimir por consola solo el nombre de los usuarios.
 
 function printNameUsers() {
-  axios
+  axios  
     .get("https://jsonplaceholder.typicode.com/users")
     .then((res) =>
       res.data.forEach((user) => {
@@ -53,7 +53,7 @@ printNameUsers();
 
 // -----------------------------------------------------------------------------------------------------
 
-// - Crear una variable global llamada "users" y, al hacer la solicitud utilizando Axios, rellenarla con la respuesta de la API. Este proceso debe realizarse fuera de cualquier función.
+// 3 - Crear una variable global llamada "users" y, al hacer la solicitud utilizando Axios, rellenarla con la respuesta de la API. Este proceso debe realizarse fuera de cualquier función.
 
 // GET REQUEST
 
@@ -70,7 +70,7 @@ axios
 
 
 
-// - Crear una función llamada "showUsers"que muestre por consola la variable global "users" que has creado.
+// 4 - Crear una función llamada "showUsers"que muestre por consola la variable global "users" que has creado.
 
 //Console.log Users:
 
@@ -133,30 +133,31 @@ function showUsers(){
 
 //-------------------------------------------------------------------------------
 
+//TODO: Cea otro html y js dentro de una carpeta para guarda como apuntes la solucion de Juanda
 
-// SOLUCION corregida CHAT GPT:
+// SOLUCION corregida en clase JUANDA:
+// (es mejor solucion porque es mas limpio)
 
-// function showUsers2() {
-//   let container = document.createElement("div");
-  
-//   users.map((user) => {
-//     let userDiv = document.createElement("div");
-//     userDiv.innerText = user.name;
-//     container.appendChild(userDiv);
-//   });
-
-//   let resDiv = document.getElementById("res-div");
-//   resDiv.innerHTML = `
-//     <div class="card">
-//       <div class="card-header">
-//         Data
-//       </div>
-//       <div class="card-body">
-//         ${container.innerHTML}
-//       </div>
-//     </div>
-//   `;
+// A partir del ejercicio 3:
+// let users = [];
+// axios
+//   .get("https://jsonplaceholder.typicode.com/users")
+//   .then((res) => (users = res.data))
+//   .catch((err) => console.error(err));
+// console.log(users);
+// // 4
+// const showUsers = () => {
+//   console.log(users)
+//   users.forEach(user => {
+//     console.log(user)
+//     texto.innerHTML += `<p> ${user.name} </p>`
+//   })
 // }
+// // 5
+// const btn = document.getElementById("btn")
+// btn.addEventListener("click",showUsers)
+// // 6
+// const texto = document.getElementById("text")
 
 
 // // //Event listener
